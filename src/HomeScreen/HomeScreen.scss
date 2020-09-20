@@ -1,6 +1,11 @@
 .home-screen {
   height: 100%;
   width: 100%;
-  background-color: lightblue;
   position: fixed;
+  .add-plan-button {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
