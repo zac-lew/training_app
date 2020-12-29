@@ -1,0 +1,17 @@
+.create-plan-screen {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  .calendar-container {
+    width: 75%;
+    height: 80%;
+    margin: 2%;
+  }
+  .menu-container {
+    border: 1px solid lightgrey;
+    height: 60%;
+    width: 20%;
+  }
+}
