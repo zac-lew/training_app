@@ -11,10 +11,10 @@ const HomeScreen = () => {
   return (
     <div className="home-screen">
       <HeaderBar />
-      {/* <WeeklyView /> */}
-      <Button variant="outline-success" className="add-plan-button" onClick={() => history.push("/create")}>
+      <WeeklyView />
+      {/* <Button variant="outline-success" className="add-plan-button" onClick={() => history.push("/create")}>
         Add Training Plan!
-      </Button>
+      </Button> */}
     </div>
   );
 };

@@ -28,8 +28,8 @@
     svg {
       height: 80px;
     }
-    .session1 {
-      border-right: 1px solid lightgrey;
+    .session:not(:first-child) {
+      border-left: 1px solid lightgrey;
     }
   }
 }

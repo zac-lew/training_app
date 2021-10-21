@@ -8,13 +8,13 @@ const DayCard = (props) => {
     <div className="day-card">
       <div className="header">{props.dayOfWeek}</div>
       <div className="content">
-        <div className="session1">
+        <div className="session">
           <div>Session 1:</div>
           <div>10km Run</div>
           <Running />
           <div>Intensity: Easy</div>
         </div>
-        <div className="session2">
+        <div className="session">
           <div>Session 2:</div>
           <div>1hr 30min Ride</div>
           <Cycling />
