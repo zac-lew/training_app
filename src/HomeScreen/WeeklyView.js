@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./WeeklyView.scss";
 import DayCard from "./Components/DayCard";
-import { dummy_data } from "../Assets/Data/dummy_data";
 import moment from "moment";
+import { Button } from "react-bootstrap";
 
-const WeeklyView = () => {
+const WeeklyView = ({ trainingData }) => {
   const [mondayDate, setMondayDate] = useState(
     moment().startOf("week").add(1, "days")
   );
@@ -19,11 +19,11 @@ const WeeklyView = () => {
   });
 
   useEffect(() => {
-    setWeeklyData(sortWeeklyData(dummy_data, mondayDate));
+    setWeeklyData(sortWeeklyData(trainingData, mondayDate));
   }, []);
-  
+
   useEffect(() => {
-    setWeeklyData(sortWeeklyData(dummy_data, mondayDate));
+    setWeeklyData(sortWeeklyData(trainingData, mondayDate));
   }, [mondayDate]);
 
   return (
