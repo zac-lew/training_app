@@ -12,12 +12,25 @@ const HomeScreen = () => {
   return (
     <div className="home-screen">
       <HeaderBar currentView={currentView} setCurrentView={setCurrentView} />
-      <WeeklyView />
+      {renderTrainingView(currentView)}
       {/* <Button variant="outline-success" className="add-plan-button" onClick={() => history.push("/create")}>
         Add Training Plan!
       </Button> */}
     </div>
   );
+};
+
+const renderTrainingView = (currentView) => {
+  switch (currentView) {
+    case "Daily":
+      return "Not yet available";
+    case "Weekly":
+      return <WeeklyView />;
+    case "Monthly":
+      return "Not yet available";
+    case "Yearly":
+      return "Not yet available";
+  }
 };
 
 export default HomeScreen;

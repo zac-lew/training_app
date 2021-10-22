@@ -2,36 +2,65 @@ import React, { useEffect, useState } from "react";
 import "./WeeklyView.scss";
 import DayCard from "./Components/DayCard";
 import { dummy_data } from "../Assets/Data/dummy_data";
-import { getNextMonday } from "../Assets/Functions/utils";
+import moment from "moment";
 
 const WeeklyView = () => {
-  const [mondayDate, setMondayDate] = useState(getNextMonday());
-  const [weeklyData, setWeeklyData] = useState();
+  const [mondayDate, setMondayDate] = useState(
+    moment().startOf("week").add(1, "days")
+  );
+  const [weeklyData, setWeeklyData] = useState({
+    monday: null,
+    tuesday: null,
+    wednesday: null,
+    thursday: null,
+    friday: null,
+    saturday: null,
+    sunday: null,
+  });
 
   useEffect(() => {
     setWeeklyData(sortWeeklyData(dummy_data, mondayDate));
-  });
+  }, []);
+  
+  useEffect(() => {
+    setWeeklyData(sortWeeklyData(dummy_data, mondayDate));
+  }, [mondayDate]);
 
   return (
     <div className="weekly-view">
-      <DayCard dayOfWeek="Monday" data={dummy_data} />
-      <DayCard dayOfWeek="Tuesday" />
-      <DayCard dayOfWeek="Wednesday" />
-      <DayCard dayOfWeek="Thursday" />
-      <DayCard dayOfWeek="Friday" />
-      <DayCard dayOfWeek="Saturday" />
-      <DayCard dayOfWeek="Sunday" />
+      <DayCard dayOfWeek="Monday" data={weeklyData.monday} />
+      <DayCard dayOfWeek="Tuesday" data={weeklyData.tuesday} />
+      <DayCard dayOfWeek="Wednesday" data={weeklyData.wednesday} />
+      <DayCard dayOfWeek="Thursday" data={weeklyData.thursday} />
+      <DayCard dayOfWeek="Friday" data={weeklyData.friday} />
+      <DayCard dayOfWeek="Saturday" data={weeklyData.saturday} />
+      <DayCard dayOfWeek="Sunday" data={weeklyData.sunday} />
     </div>
   );
 };
 
 const sortWeeklyData = (data, startingMonday) => {
-  console.log("DATA", data);
-  console.log("startingMonday", startingMonday);
-  let filteredData = {
-    monday: data.filter((session) => session.date.getTime() == startingMonday.getTime()),
+  return {
+    monday: data.filter((session) => session.date.isSame(startingMonday)),
+    tuesday: data.filter((session) =>
+      session.date.isSame(startingMonday.clone().add(1, "days"))
+    ),
+    wednesday: data.filter((session) =>
+      session.date.isSame(startingMonday.clone().add(2, "days"))
+    ),
+    thursday: data.filter((session) =>
+      session.date.isSame(startingMonday.clone().add(3, "days"))
+    ),
+    friday: data.filter((session) =>
+      session.date.isSame(startingMonday.clone().add(4, "days"))
+    ),
+    saturday: data.filter((session) =>
+      session.date.isSame(startingMonday.clone().add(5, "days"))
+    ),
+    sunday: data.filter((session) =>
+      session.date.isSame(startingMonday.clone().add(6, "days"))
+    ),
   };
-  console.log("🚀 ~ file: WeeklyView.js ~ line 34 ~ sortWeeklyData ~ filteredData", filteredData);
 };
 
 export default WeeklyView;

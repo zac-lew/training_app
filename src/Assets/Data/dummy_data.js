@@ -1,7 +1,9 @@
+import moment from 'moment';
+
 export const dummy_data = [
   // Monday
   {
-    date: Date.parse("2021-04-10"),
+    date: moment("2021-10-18"),
     daily_session: 1,
     sport: "running",
     distance: 10,
@@ -11,16 +13,17 @@ export const dummy_data = [
     notes: "Flat, recovery run",
   },
   {
-    date: Date.parse("2021-04-10"),
+    date: moment("2021-10-18"),
     daily_session: 2,
     sport: "cycling",
-    distance: null,
+    distance_unit: "km",
+    distance: 45,
     time: 180,
     intensity: "easy",
   },
   // Tuesday
   {
-    date: Date.parse("2021-05-10"),
+    date: moment("2021-10-19"),
     daily_session: 1,
     sport: "running",
     distance: 10,
@@ -31,7 +34,7 @@ export const dummy_data = [
   },
   // Wednesday
   {
-    date: Date.parse("2021-06-10"),
+    date: moment("2021-10-20"),
     daily_session: 1,
     sport: "running",
     distance: 10,
@@ -42,7 +45,7 @@ export const dummy_data = [
   },
   // Thursday
   {
-    date: Date.parse("2021-07-10"),
+    date: moment("2021-10-21"),
     daily_session: 1,
     sport: "running",
     distance: 10,
@@ -53,7 +56,7 @@ export const dummy_data = [
   },
   // Friday
   {
-    date: Date.parse("2021-08-10"),
+    date: moment("2021-10-22"),
     daily_session: 1,
     sport: "running",
     distance: 10,
@@ -64,7 +67,7 @@ export const dummy_data = [
   },
   // Saturday
   {
-    date: Date.parse("2021-09-10"),
+    date: moment("2021-10-23"),
     daily_session: 1,
     sport: "running",
     distance: 10,
@@ -75,7 +78,7 @@ export const dummy_data = [
   },
   // Sunday
   {
-    date: Date.parse("2021-10-10"),
+    date: moment("2021-10-24"),
     daily_session: 1,
     sport: "running",
     distance: 10,
