@@ -2,30 +2,37 @@ import React, { useState } from "react";
 import "./HomeScreen.scss";
 import HeaderBar from "./Components/HeaderBar";
 import WeeklyView from "./WeeklyView";
-import { dummyData } from "../Assets/Data/dummy_data";
-import { Button } from "react-bootstrap";
+import { dummy_data } from "../Assets/Data/dummy_data";
 import { useHistory } from "react-router-dom";
+import { AddSessionModal } from "./Components/AddSession";
 
 const HomeScreen = () => {
   const history = useHistory();
   const [currentView, setCurrentView] = useState("Weekly");
+  const [trainingData, setTrainingData] = useState(dummy_data);
+  const [showAddSessionModal, setShowAddSessionModal] = useState(false);
   return (
     <div className="home-screen">
-      <HeaderBar currentView={currentView} setCurrentView={setCurrentView} />
-      {renderTrainingView(currentView)}
-      {/* <Button variant="outline-success" className="add-plan-button" onClick={() => history.push("/create")}>
-        Add Training Plan!
-      </Button> */}
+      <HeaderBar
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+        setShowAddSessionModal={setShowAddSessionModal}
+      />
+      {renderTrainingView(currentView, trainingData)}
+      <AddSessionModal
+        showAddSessionModal={showAddSessionModal}
+        setShowAddSessionModal={setShowAddSessionModal}
+      />
     </div>
   );
 };
 
-const renderTrainingView = (currentView) => {
+const renderTrainingView = (currentView, trainingData) => {
   switch (currentView) {
     case "Daily":
       return "Not yet available";
     case "Weekly":
-      return <WeeklyView />;
+      return <WeeklyView trainingData={trainingData} />;
     case "Monthly":
       return "Not yet available";
     case "Yearly":

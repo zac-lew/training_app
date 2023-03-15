@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./WeeklyView.scss";
 import DayCard from "./Components/DayCard";
-import { dummy_data } from "../Assets/Data/dummy_data";
 import moment from "moment";
+import { Button } from "react-bootstrap";
 
-const WeeklyView = () => {
-  const [mondayDate, setMondayDate] = useState(
-    moment().startOf("week").add(1, "days")
-  );
+const WeeklyView = ({ trainingData }) => {
+  // Use temp data to prevent need for updating:
+  // const [mondayDate, setMondayDate] = useState(
+  //   moment().startOf("week").add(1, "days")
+  // );
+  const [mondayDate, setMondayDate] = useState(moment("2021-10-18"));
   const [weeklyData, setWeeklyData] = useState({
     monday: null,
     tuesday: null,
@@ -19,11 +21,11 @@ const WeeklyView = () => {
   });
 
   useEffect(() => {
-    setWeeklyData(sortWeeklyData(dummy_data, mondayDate));
+    setWeeklyData(sortWeeklyData(trainingData, mondayDate));
   }, []);
-  
+
   useEffect(() => {
-    setWeeklyData(sortWeeklyData(dummy_data, mondayDate));
+    setWeeklyData(sortWeeklyData(trainingData, mondayDate));
   }, [mondayDate]);
 
   return (

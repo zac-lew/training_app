@@ -3,7 +3,7 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./HeaderBar.scss";
 import Views from "../../Assets/Constants/views";
 
-const HeaderBar = ({ currentView, setCurrentView }) => {
+const HeaderBar = ({ currentView, setCurrentView, setShowAddSessionModal }) => {
   return (
     <Navbar bg="light" sticky="top">
       <Container>
@@ -12,7 +12,9 @@ const HeaderBar = ({ currentView, setCurrentView }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Menu" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Edit Plan</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setShowAddSessionModal(true)}>
+                Add Session
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Export Plan
               </NavDropdown.Item>
