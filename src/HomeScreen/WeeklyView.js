@@ -5,9 +5,11 @@ import moment from "moment";
 import { Button } from "react-bootstrap";
 
 const WeeklyView = ({ trainingData }) => {
-  const [mondayDate, setMondayDate] = useState(
-    moment().startOf("week").add(1, "days")
-  );
+  // Use temp data to prevent need for updating:
+  // const [mondayDate, setMondayDate] = useState(
+  //   moment().startOf("week").add(1, "days")
+  // );
+  const [mondayDate, setMondayDate] = useState(moment("2021-10-18"));
   const [weeklyData, setWeeklyData] = useState({
     monday: null,
     tuesday: null,

@@ -4,7 +4,7 @@ import HeaderBar from "./Components/HeaderBar";
 import WeeklyView from "./WeeklyView";
 import { dummy_data } from "../Assets/Data/dummy_data";
 import { useHistory } from "react-router-dom";
-import { Modal, Button, Form } from "react-bootstrap";
+import { AddSessionModal } from "./Components/AddSession";
 
 const HomeScreen = () => {
   const history = useHistory();
@@ -38,53 +38,6 @@ const renderTrainingView = (currentView, trainingData) => {
     case "Yearly":
       return "Not yet available";
   }
-};
-
-const AddSessionModal = ({ showAddSessionModal, setShowAddSessionModal }) => {
-  return (
-    <Modal
-      show={showAddSessionModal}
-      onHide={() => setShowAddSessionModal(false)}
-    >
-      <Modal.Header closeButton>
-        <Modal.Title>Add A Training Session</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <AddSessionForm />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button
-          variant="secondary"
-          onClick={() => setShowAddSessionModal(false)}
-        >
-          Cancel
-        </Button>
-        <Button variant="primary">Save changes</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-};
-
-const AddSessionForm = () => {
-  return (
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-    </Form>
-  );
 };
 
 export default HomeScreen;
